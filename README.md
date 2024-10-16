@@ -1,31 +1,11 @@
-### ORACLEDB - node
-```
-// myscript.js
+# Template para criar backends Oracle
 
-const oracledb = require('oracledb');
+Este projeto considera que você tenha
+o conhecimento mínimo sobre Oracle e
+que você já tenha estudado sobre o node-oracledb
 
-oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
+## Dotenv
 
-const mypw = ...  // set mypw to the hr schema password
+Importante ressaltar que em caso real, você não deve colocar em repositório o arquivo .env com as variáveis de configuração de conexão por razões de segurança. 
 
-async function run() {
-
-    const connection = await oracledb.getConnection ({
-        user          : "hr",
-        password      : mypw,
-        connectString : "localhost/FREEPDB1"
-    });
-
-    const result = await connection.execute(
-        `SELECT manager_id, department_id, department_name
-         FROM departments
-         WHERE manager_id = :id`,
-        [103],  // bind value for :id
-    );
-
-    console.log(result.rows);
-    await connection.close();
-}
-
-run();
-```
+Atenção: Altere as configurações no arquivo .env para colocar os dados reais de sua conexão. 
